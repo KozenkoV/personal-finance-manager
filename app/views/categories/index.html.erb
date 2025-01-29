@@ -1,0 +1,11 @@
+<div class="container">
+  <h2 class="title-lg mb">Категорії</h2>
+
+  <% @categories.each do |category| %>
+    <p class="mb-sm"><%= link_to " Категорія #{category.id}", category_path(id: category.id) %></p>
+  <% end %>
+
+  <p class="mt">
+    <%= link_to "Створити нову категорію", new_category_path, class: 'button button-main' %>
+  </p>
+</div>

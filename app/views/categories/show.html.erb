@@ -1,0 +1,13 @@
+<div class="container">  
+  <h2 class="title-lg mb">Категорії<%= @category.id %></h2>
+
+  <p class="mb-sm"><%= @category.name %></p>
+  <p>description: <b><%= @category.description %></b></p>
+
+  <p class="mt"><%= link_to 'Змінити запит', edit_category_path(@category) %></p>
+  <div>
+    <%= button_to 'Видалити', category_path(@category), method: :delete, data: { confirm: 'Ви впевнені, що хочете видалити цю категорію?' } %>
+  </div>
+
+  <p class="mt"><%= link_to "Назад", "/categories" %></p>
+</div>

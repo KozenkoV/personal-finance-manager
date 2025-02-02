@@ -1,0 +1,20 @@
+<h2>Транзакції</h2>
+
+<% if @transactions.any? %>
+  <ul>
+    <% @transactions.each do |transaction| %>
+      <li>
+        <b><%= transaction.transaction_type %></b>: <%= transaction.description %> - <%= transaction.total %> грн
+        <%= link_to "Показати", transaction_path(transaction) %> |
+        <%= link_to "Редагувати", edit_transaction_path(transaction) %> |
+        <%= link_to "Видалити", transaction, method: :delete, data: { confirm: "Видалити?", "turbo-method": :delete } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Немає транзакцій</p>
+<% end %>
+
+<p><%= link_to "Додати транзакцію", new_transaction_path %></p>
+<p><%= link_to "Назад", categories_path %></p>
+

@@ -1,0 +1,28 @@
+<h2>Нова транзакція</h2>
+
+<%= form_with(model: @transaction || Transaction.new) do |f| %>
+  <div>
+    <%= f.label :category_id, "Категорія" %>
+    <%= f.select :category_id, Category.all.collect { |category| [category.name, category.id] } %>
+  </div>
+
+  <div>
+    <%= f.label :transaction_type, "Тип транзакції" %>
+    <%= f.text_field :transaction_type %>
+  </div>
+  <div>
+    <%= f.label :description, "Опис" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :total, "Сума" %>
+    <%= f.number_field :total, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= f.submit "Створити" %>
+  </div>
+<% end %>
+
+<p><%= link_to "Назад", transactions_path %></p>

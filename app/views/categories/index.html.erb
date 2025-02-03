@@ -1,11 +1,32 @@
-<div class="container">
-  <h2 class="title-lg mb">Категорії</h2>
+<h2>Категорії</h2>
 
-  <% @categories.each do |category| %>
-    <p class="mb-sm"><%= link_to " Категорія #{category.id}", category_path(id: category.id) %></p>
-  <% end %>
+<table class="table">
+  <thead class="table-light">
+    <th>Назва категорії</th>
+    <th>Опис</th>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+  </thead>
+  <tbody>
+    <% if @categories.any? %>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td><%= link_to "Показати", category_path(category), class: "btn btn-dark" %></td>
+          <td><%= link_to "Редагувати", edit_category_path(category), class: "btn btn-dark" %></td>
+          <td><%= link_to "Видалити", category, method: :delete, data: { confirm: "Видалити?", "turbo-method": :delete }, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5">Немає категорій</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <p class="mt">
-    <%= link_to "Створити нову категорію", new_category_path, class: 'button button-main' %>
-  </p>
+<div class="mt-1">
+  <%= link_to "Додати категорію", new_category_path, class: "btn btn-dark" %>
 </div>

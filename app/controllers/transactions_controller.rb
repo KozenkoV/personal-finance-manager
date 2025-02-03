@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
     
     
     def index
-        @transactions = Transaction.all
+       @transactions = Transaction.all.includes(:category)
     end
     
     def show

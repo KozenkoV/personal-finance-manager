@@ -1,11 +1,13 @@
-<h2>Деталі транзакції</h2>
+<h2>Деталі транзакції</h2> 
+ 
+<p><strong>Категорія:</strong> <%= @category.name %></p> 
+ 
+<p><strong>Тип:</strong> <%= @transaction.transaction_type %></p> 
+<p><strong>Опис:</strong> <%= @transaction.description %></p> 
+<p><strong>Сума:</strong> <%= @transaction.total %> грн</p> 
+<p><strong>Дата створення:</strong> <%= @transaction.created_at.strftime("%d.%m.%Y %H:%M") %></p>
 
-<p><strong>Категорія:</strong><%= @category.name %></p>
-
-<p><strong>Тип:</strong> <%= @transaction.transaction_type %></p>
-<p><strong>Опис:</strong> <%= @transaction.description %></p>
-<p><strong>Сума:</strong> <%= @transaction.total %> грн</p>
-
-<p><%= link_to "Редагувати", edit_transaction_path(@transaction) %></p>
-<p><%= link_to "Назад", transactions_path %></p>
-
+<div> 
+  <%= link_to "Редагувати", edit_transaction_path(@transaction), class: "btn btn-dark" %> 
+  <%= link_to "Назад", transactions_path, class: "btn btn-dark" %> 
+</div>

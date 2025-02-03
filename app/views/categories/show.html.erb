@@ -1,13 +1,9 @@
-<div class="container">  
-  <h2 class="title-lg mb">Категорії<%= @category.id %></h2>
+<h2>Деталі категорії</h2>
 
-  <p class="mb-sm"><%= @category.name %></p>
-  <p>description: <b><%= @category.description %></b></p>
+<p><strong>Назва:</strong> <%= @category.name %></p>
+<p><strong>Опис:</strong> <%= @category.description %></p>
 
-  <p class="mt"><%= link_to 'Змінити запит', edit_category_path(@category) %></p>
-  <div>
-    <%= button_to 'Видалити', category_path(@category), method: :delete, data: { confirm: 'Ви впевнені, що хочете видалити цю категорію?' } %>
-  </div>
-
-  <p class="mt"><%= link_to "Назад", "/categories" %></p>
+<div>
+  <%= link_to "Редагувати", edit_category_path(@category), class: "btn btn-dark" %>
+  <%= link_to "Назад", categories_path, class: "btn btn-dark" %>
 </div>

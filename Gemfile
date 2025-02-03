@@ -47,6 +47,10 @@ gem "autoprefixer-rails", "~> 10.4", ">= 10.4.19.0"
 # User authorization
 gem "devise", "~> 4.9", ">= 4.9.4"
 
+gem "chartkick", "~> 5.1", ">= 5.1.3"
+
+gem "groupdate", "~> 6.5", ">= 6.5.1"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

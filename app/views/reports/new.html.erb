@@ -1,0 +1,39 @@
+<h1>Генератор Звітів</h1>
+
+<%= form_with url: reports_path, scope: :transaction, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :started_at, "Дата YYYY-MM-DD", class: "form-label" %>
+
+    <div class="col-sm-4">
+      <%= form.date_field :started_at, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :finished_at, "Дата YYYY-MM-DD", class: "form-label" %>
+
+    <div class="col-sm-4">
+      <%= form.date_field :finished_at, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :transaction_type, "Тип транзакції", class: "form-label" %>
+
+    <div class="col-sm-4">
+      <%= form.select :transaction_type, Transaction.distinct.pluck(:transaction_type), { include_blank: true }, { class: "form-select" } %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category_id, "Категорія", class: "form-label" %>
+
+    <div class="col-sm-4">
+      <%= form.select :category_id, Category.all.collect { |category| [category.name, category.id] }, { include_blank: true }, { class: "form-select" } %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Згенерувати Звіт", class: "btn btn-dark" %>
+  </div>
+<% end %>

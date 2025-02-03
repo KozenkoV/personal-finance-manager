@@ -1,18 +1,18 @@
-<div class="container">
-  <h2 class="title-lg">Редагування запиту <%= @category.id %></h2>
+<h2>Редагувати категорію</h2>
 
-  <% if @category.present? %>
-    <%= form_with model: @category do |form| %>
-      <!-- Поля форми -->
-    <p><%= form.label :name, 'Текст запиту' %></p>
-    <p><%= form.text_area :name, rows: 5 %></p>
+<%= form_with(model: @category, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "Назва категорії", class: "form-label" %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
 
-    <p class="mt"><%= form.label :description, 'Назва запиту' %></p>
-    <p><%= form.text_field :description %></p>
-  
-    <p class="mt"><%= form.submit 'Зберегти', class: 'button button-main' %></p>
-    <% end %>
-    <% else %>
-    <p>Помилка: змінна @category має значення nil</p>
-  <% end %>
-</div>
+  <div class="mb-3">
+    <%= form.label :description, "Опис", class: "form-label" %>
+    <%= form.text_area :description, class: 'form-control', rows: 3 %>
+  </div>
+
+  <div>
+    <%= form.submit "Оновити", class: "btn btn-dark" %>
+    <%= link_to "Назад", categories_path, class: "btn btn-dark" %>
+  </div>
+<% end %>

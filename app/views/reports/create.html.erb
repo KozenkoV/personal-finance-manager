@@ -1,0 +1,44 @@
+<div class="row">
+  <h1>Звіт за період: <%= "#{@transactions_meta[:started_at]} - #{@transactions_meta[:finished_at]}" %></h1>
+</div>
+<div class="row mt-5">
+  <div class="col">
+    <table class="table">
+      <thead class="table-light">
+        <th>Категорія</th>
+        <th>Сума</th>
+      </thead>
+      <tbody>
+        <% if @transactions.any? %>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= transaction.category.name %></td>
+              <td><%= transaction.total %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <p>Немає транзакцій</p>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <div class="row" style="text-align: center;">
+        <h3>Розподіл витрат за період</h3>
+    </div>
+    <div class="row">
+      <%= pie_chart @transactions.group_by { |transaction| transaction.category.name }.transform_values { |values| values.map { |value| value.total }.sum } %>
+    </div>
+  </div>
+</div>
+<div class="row mt-5 mb-5">
+  <div class="row" style="text-align: center;">
+    <h3>Розподіл витрат за період [По датам]</h3>
+  </div>
+  <div class="row">
+    <%= line_chart @transactions.group_by_day(:created_at).count %>
+  </div>
+</div>
+<div><br /></div>

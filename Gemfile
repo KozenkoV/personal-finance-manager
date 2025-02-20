@@ -47,7 +47,7 @@ gem "autoprefixer-rails", "~> 10.4", ">= 10.4.19.0"
 # User authorization
 gem "devise", "~> 4.9", ">= 4.9.4"
 
-gem "chartkick", "~> 5.1", ">= 5.1.3"
+gem "chartkick", "~> 5.1"
 
 gem "groupdate", "~> 6.5", ">= 6.5.1"
 
